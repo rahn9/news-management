@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.epam.vakhidat.news_management.News" table="news">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="TITLE" length="100" not-null="true" />
+        </property>
+        <property name="creationDate" type="timestamp">
+            <column name="CREATION_DATE" not-null="true" />
+        </property>
+        <property name="brief" type="string">
+            <column name="BRIEF" length="500" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="CONTENT" length="2048" not-null="true" />
+        </property>
+        <property name="deleted" type="java.lang.Boolean">
+            <column name="DELETED" default="false"/>
+        </property>
+    </class>
+</hibernate-mapping>

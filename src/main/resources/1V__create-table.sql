@@ -1,0 +1,23 @@
+CREATE TABLE SA.news
+(
+    id NUMBER(10, 0) PRIMARY KEY NOT NULL,
+    title VARCHAR2(100) NOT NULL,
+    creation_date DATE DEFAULT CURRENT_DATE NOT NULL,
+    brief VARCHAR2(500),
+    content VARCHAR2(2048) NOT NULL,
+    deleted NUMBER(1, 0) DEFAULT 0
+);
+
+CREATE SEQUENCE id_sequence
+START WITH 1
+INCREMENT BY 1
+CACHE 100;
+
+CREATE OR REPLACE TRIGGER id_trigger
+BEFORE INSERT ON SA.NEWS
+FOR EACH ROW
+    BEGIN
+        SELECT id_sequence.nextval
+        INTO :new.id
+        FROM dual;
+    END;
