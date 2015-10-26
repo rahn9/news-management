@@ -2,8 +2,8 @@ package com.epam.vakhidat.news_management;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.classic.Session;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class NewsDao {
     public List<News> getAllNews() {
         log.debug("Retrieving all news");
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM  NEWS");
+        Query query = session.createQuery("FROM  News");
         log.debug("News were retrieved");
         return  query.list();
     }
