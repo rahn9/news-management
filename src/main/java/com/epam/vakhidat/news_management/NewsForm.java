@@ -1,8 +1,7 @@
 package com.epam.vakhidat.news_management;
 
 import org.apache.struts.action.ActionForm;
-
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
 
 public class NewsForm extends ActionForm {
     private String title;
@@ -22,8 +21,8 @@ public class NewsForm extends ActionForm {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = LocalDate.parse(creationDate);
     }
 
     public String getBrief() {

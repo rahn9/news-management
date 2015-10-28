@@ -1,29 +1,24 @@
 package com.epam.vakhidat.news_management;
 
-import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 
-@Slf4j
 public class NewsDao {
-    private SessionFactory sessionFactory;
 
     public List<News> getAllNews() {
-        log.debug("Retrieving all news");
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM  News");
-        log.debug("News were retrieved");
-        return  query.list();
+        EntityManagerFactory emf =
+                Persistence.createEntityManagerFactory("EmployeeService");
+        EntityManager entityManager = emf.createEntityManager();
+        javax.persistence.Query query = entityManager.createNativeQuery("SELECT * FROM NEWS");
+        return query.getResultList();
     }
 
-    public void removeById(long id) {
+   /* public void removeById(long id) {
         Session session = sessionFactory.getCurrentSession();
         News news = (News) session.get(News.class, id);
         session.delete(news);
-        log.debug("News were deleted {}",  news);
     }
 
     public News findById(long id) {
@@ -42,20 +37,11 @@ public class NewsDao {
         editedNews.setCreationDate(news.getCreationDate());
 
         session.save(editedNews);
-        log.debug("Editing news success {}", editedNews);
-    }
+    }*/
 
     public void addNews(News news) {
-        Session session = sessionFactory.getCurrentSession();
-        session.save(news);
-        log.debug("Adding news success {}", news);
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("NewsService");
+        EntityManager entityManager = emf.createEntityManager();
+        entityManager.persist(news);
     }
 }

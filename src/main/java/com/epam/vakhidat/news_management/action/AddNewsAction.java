@@ -3,7 +3,6 @@ package com.epam.vakhidat.news_management.action;
 import com.epam.vakhidat.news_management.News;
 import com.epam.vakhidat.news_management.NewsDao;
 import com.epam.vakhidat.news_management.NewsForm;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.InvocationTargetException;
 
-@Slf4j
 public class AddNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
                                  HttpServletRequest request, HttpServletResponse response) {
@@ -24,11 +22,9 @@ public class AddNewsAction extends ActionSupport {
         try {
             BeanUtils.copyProperties(news, newsForm);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            log.error("Can't copy properties from newsForm to news", e);
             return mapping.findForward("failure");
         }
         newsDao.addNews(news);
-        log.debug("News add completed");
         return mapping.findForward("success");
     }
 }

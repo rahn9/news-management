@@ -12,27 +12,28 @@
     </bean>
 
     <bean id="newsDao" class="com.epam.vakhidat.news_management.NewsDao">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <property name="" ref="sessionFactory" />
     </bean>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mappingResources">
+       <!-- <property name="mappingResources">
             <list>
-                <value>WEB-INF/news.hbm.xml</value>
+                <value>com.epam.vakhidat.news_management/news.hbm.xml</value>
             </list>
-        </property>
+        </property>-->
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-                <prop key="hibernate.current_session_context_class">thread</prop>
             </props>
         </property>
     </bean>
 
     <!-- Transaction Manager -->
+    <tx:annotation-driven transaction-manager= "txManager"/>
+
     <bean id="txManager"
-          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 

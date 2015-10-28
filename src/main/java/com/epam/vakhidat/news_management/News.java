@@ -3,7 +3,12 @@ package com.epam.vakhidat.news_management;
 
 import org.joda.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class News {
+    @Id
     private long id;
     private String title;
     private LocalDate creationDate;
