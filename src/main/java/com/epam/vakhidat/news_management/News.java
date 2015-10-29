@@ -3,6 +3,7 @@ package com.epam.vakhidat.news_management;
 
 import org.joda.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -10,10 +11,15 @@ import javax.persistence.Id;
 public class News {
     @Id
     private long id;
+    @Column(name = "TITLE")
     private String title;
+    @Column(name = "CREATION_DATE")
     private LocalDate creationDate;
+    @Column(name = "BRIEF")
     private String brief;
+    @Column(name = "CONTENT")
     private String content;
+    @Column(name = "DELETED")
     private boolean deleted;
 
     public News() {

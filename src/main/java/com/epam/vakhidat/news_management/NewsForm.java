@@ -4,6 +4,7 @@ import org.apache.struts.action.ActionForm;
 import org.joda.time.LocalDate;
 
 public class NewsForm extends ActionForm {
+    private long id;
     private String title;
     private LocalDate creationDate;
     private String brief;
@@ -39,5 +40,29 @@ public class NewsForm extends ActionForm {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        NewsForm newsForm = (NewsForm) o;
+
+        return id == newsForm.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 }

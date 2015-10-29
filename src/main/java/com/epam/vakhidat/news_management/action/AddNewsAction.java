@@ -16,8 +16,9 @@ import java.lang.reflect.InvocationTargetException;
 public class AddNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
                                  HttpServletRequest request, HttpServletResponse response) {
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("NewsDao");
         NewsForm newsForm = (NewsForm) actionForm;
+        newsForm.setId(123);
         News news = new News();
         try {
             BeanUtils.copyProperties(news, newsForm);

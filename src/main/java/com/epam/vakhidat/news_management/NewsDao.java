@@ -1,16 +1,23 @@
 package com.epam.vakhidat.news_management;
 
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class NewsDao {
+    private EntityManagerFactory entityManagerFactory;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public List<News> getAllNews() {
-        EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("EmployeeService");
-        EntityManager entityManager = emf.createEntityManager();
+        entityManagerFactory = Persistence.createEntityManagerFactory("NewsDao");
+        entityManager = entityManagerFactory.createEntityManager();
         javax.persistence.Query query = entityManager.createNativeQuery("SELECT * FROM NEWS");
         return query.getResultList();
     }
@@ -40,8 +47,18 @@ public class NewsDao {
     }*/
 
     public void addNews(News news) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("NewsService");
-        EntityManager entityManager = emf.createEntityManager();
+        entityManagerFactory = Persistence.createEntityManagerFactory("NewsDao");
+        entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
         entityManager.persist(news);
+        entityManager.getTransaction().commit();
+    }
+
+    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
+    }
+
+    public EntityManagerFactory getEntityManagerFactory() {
+        return entityManagerFactory;
     }
 }
