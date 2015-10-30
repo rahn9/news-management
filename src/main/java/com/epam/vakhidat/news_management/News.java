@@ -3,13 +3,13 @@ package com.epam.vakhidat.news_management;
 
 import org.joda.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "NEWS")
 public class News {
     @Id
+    @GeneratedValue()
     private long id;
     @Column(name = "TITLE")
     private String title;

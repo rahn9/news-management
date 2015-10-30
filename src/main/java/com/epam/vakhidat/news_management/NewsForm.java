@@ -3,12 +3,18 @@ package com.epam.vakhidat.news_management;
 import org.apache.struts.action.ActionForm;
 import org.joda.time.LocalDate;
 
+import java.util.UUID;
+
 public class NewsForm extends ActionForm {
-    private long id;
+    private UUID uuid;
     private String title;
     private LocalDate creationDate;
     private String brief;
     private String content;
+
+    public NewsForm() {
+        this.setUuid(UUID.randomUUID());
+    }
 
     public String getTitle() {
         return title;
@@ -42,12 +48,12 @@ public class NewsForm extends ActionForm {
         this.content = content;
     }
 
-    public long getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     @Override
@@ -57,12 +63,12 @@ public class NewsForm extends ActionForm {
 
         NewsForm newsForm = (NewsForm) o;
 
-        return id == newsForm.id;
+        return uuid.equals(newsForm.uuid);
 
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return uuid.hashCode();
     }
 }

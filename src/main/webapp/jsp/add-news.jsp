@@ -11,8 +11,13 @@
 </head>
 
 <body>
-<html:form action="/addNews.do" method="POST">
 
+<%--<div class="menu-bar">
+    <bean:message key="newsMenu.title"/>
+
+</div>--%>
+
+<html:form action="/addNews.do" method="POST">
     <div class="action-form">
 
         <table>
@@ -39,7 +44,6 @@
         <html:reset>
             <bean:message key="newsEdit.label.button.cancel"/>
         </html:reset>
-
     </div>
 </html:form>
 

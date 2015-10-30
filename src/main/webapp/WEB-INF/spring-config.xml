@@ -2,25 +2,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="NewsDao" class="com.epam.vakhidat.news_management.NewsDao">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
-    </bean>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceXmlLocation" value="/META-INF/persistence.xml" />
-        <property name="packagesToScan" value="com.epam.vakhidat.news_management.*" />
+        <property name="persistenceXmlLocation" value="classpath*:/META-INF/persistence.xml" />
+        <!--<property name="packagesToScan" value="com.epam.vakhidat.news_management.*" />-->
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
        <!-- <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                &lt;!&ndash;<prop key="hibernate.hbm2ddl.auto">update</prop>&ndash;&gt;
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.format_sql">true</prop>
-                <prop key="current_session_context_class">thread</prop>
+                &lt;!&ndash;<prop key="hibernate.format_sql">true</prop>
+                <prop key="current_session_context_class">thread</prop>&ndash;&gt;
+                <prop key="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</prop>
+                <prop key="hibernate.connection.url">jdbc:oracle:thin:@//localhost:1521</prop>
+                <prop key="hibernate.connection.username">sa</prop>
+                <prop key="hibernate.connection.password">sa</prop>
             </props>
         </property>-->
     </bean>
@@ -33,5 +34,9 @@
 
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+    <bean id="newsDao" class="com.epam.vakhidat.news_management.NewsDao">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
 
 </beans>
