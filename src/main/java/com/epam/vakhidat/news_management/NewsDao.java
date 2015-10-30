@@ -1,6 +1,5 @@
 package com.epam.vakhidat.news_management;
 
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,9 +10,9 @@ import java.util.List;
 
 @Repository
 public class NewsDao {
-    private EntityManagerFactory entityManagerFactory;
     @PersistenceContext
     private EntityManager entityManager;
+    private EntityManagerFactory entityManagerFactory;
 
     public List<News> getAllNews() {
         entityManagerFactory = Persistence.createEntityManagerFactory("NewsDao");
@@ -49,9 +48,7 @@ public class NewsDao {
     public void addNews(News news) {
         entityManagerFactory = Persistence.createEntityManagerFactory("NewsDao");
         entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
         entityManager.persist(news);
-        entityManager.getTransaction().commit();
     }
 
     public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
