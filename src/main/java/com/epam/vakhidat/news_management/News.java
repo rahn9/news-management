@@ -19,7 +19,6 @@ public class News {
     private String brief;
     @Column(name = "CONTENT")
     private String content;
-    @Column(name = "DELETED")
     private boolean deleted;
 
     public News() {

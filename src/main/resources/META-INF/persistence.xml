@@ -13,4 +13,5 @@
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
+    <!-- TODO: move to spring-config -->
 </persistence>

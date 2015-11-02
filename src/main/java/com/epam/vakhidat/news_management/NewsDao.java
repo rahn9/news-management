@@ -12,51 +12,49 @@ import java.util.List;
 @Repository
 public class NewsDao {
     @PersistenceContext
-    private EntityManager entityManager;
-    private EntityManagerFactory entityManagerFactory;
+    private EntityManager em;
+    private EntityManagerFactory emf;
+
+    public NewsDao() {
+        emf = Persistence.createEntityManagerFactory("NewsDao");
+        em = emf.createEntityManager();
+    }
 
     public List<News> getAllNews() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("NewsDao");
-        entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createNativeQuery("SELECT * FROM NEWS");
+        Query query = em.createNativeQuery("SELECT * FROM NEWS");
         return query.getResultList();
     }
 
-   /* public void removeById(long id) {
-        Session session = sessionFactory.getCurrentSession();
-        News news = (News) session.get(News.class, id);
-        session.delete(news);
-    }*/
-
-    public News findById(long id) {
-        entityManagerFactory = Persistence.createEntityManagerFactory("NewsDao");
-        entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.find(News.class, id);
+    public void remove(News news) {
+        news.setDeleted(true);
+        Query query = em.createNativeQuery("UPDATE NEWS SET DELETED = 1 WHERE ID = " + news.getId());
+        query.executeUpdate();
     }
 
-   /* public void edit(News news) {
-        Session session = sessionFactory.getCurrentSession();
-        News editedNews = (News) session.get(News.class, news.getId());
+    public News findById(long id) {
+        return em.find(News.class, id);
+    }
 
+    public void edit(News news) {
+        News editedNews = findById(news.getId());
         editedNews.setTitle(news.getTitle());
+        editedNews.setCreationDate(news.getCreationDate());
         editedNews.setBrief(news.getBrief());
         editedNews.setContent(news.getContent());
         editedNews.setCreationDate(news.getCreationDate());
 
-        session.save(editedNews);
-    }*/
+        em.merge(editedNews);
+    }
 
     public void addNews(News news) {
-        entityManagerFactory = Persistence.createEntityManagerFactory("NewsDao");
-        entityManager = entityManagerFactory.createEntityManager();
-        entityManager.persist(news);
+        em.persist(news);
     }
 
-    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
+    public EntityManagerFactory getEmf() {
+        return emf;
     }
 
-    public EntityManagerFactory getEntityManagerFactory() {
-        return entityManagerFactory;
+    public void setEmf(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 }
