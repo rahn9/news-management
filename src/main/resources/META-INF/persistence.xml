@@ -3,7 +3,7 @@
 
     <persistence-unit name="NewsDao" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.epam.vakhidat.news_management.News</class>
+        <class>com.epam.vakhidat.news_management.entities.News</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//localhost:1521"/>

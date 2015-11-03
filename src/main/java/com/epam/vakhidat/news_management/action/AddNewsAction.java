@@ -1,8 +1,8 @@
 package com.epam.vakhidat.news_management.action;
 
-import com.epam.vakhidat.news_management.News;
-import com.epam.vakhidat.news_management.NewsDao;
-import com.epam.vakhidat.news_management.NewsForm;
+import com.epam.vakhidat.news_management.entities.News;
+import com.epam.vakhidat.news_management.dao.NewsDao;
+import com.epam.vakhidat.news_management.entities.NewsForm;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -24,7 +24,7 @@ public class AddNewsAction extends ActionSupport {
         } catch (IllegalAccessException | InvocationTargetException e) {
             return mapping.findForward("failure");
         }
-        newsDao.addNews(news);
+        newsDao.insert(news);
         return mapping.findForward("success");
     }
 }

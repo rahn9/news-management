@@ -1,8 +1,8 @@
 package com.epam.vakhidat.news_management.action;
 
-import com.epam.vakhidat.news_management.News;
-import com.epam.vakhidat.news_management.NewsDao;
-import com.epam.vakhidat.news_management.NewsForm;
+import com.epam.vakhidat.news_management.entities.News;
+import com.epam.vakhidat.news_management.dao.NewsDao;
+import com.epam.vakhidat.news_management.entities.NewsForm;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -19,14 +19,14 @@ public class EditNewsAction extends ActionSupport {
         NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         long id = Long.valueOf(request.getParameter("id"));
         NewsForm newsForm = (NewsForm) actionForm;
-        News news = newsDao.findById(id);
+        News news = newsDao.find(id);
         news.setId(id);
         try {
             BeanUtils.copyProperties(news, newsForm);
         } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-        newsDao.edit(news);
+        newsDao.update(news);
         return mapping.findForward("success");
     }
 }

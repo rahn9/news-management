@@ -1,5 +1,6 @@
-package com.epam.vakhidat.news_management;
+package com.epam.vakhidat.news_management.dao;
 
+import com.epam.vakhidat.news_management.entities.News;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -10,7 +11,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class NewsDao {
+public class NewsDao implements Dao<News> {
     @PersistenceContext
     private EntityManager em;
     private EntityManagerFactory emf;
@@ -20,23 +21,20 @@ public class NewsDao {
         em = emf.createEntityManager();
     }
 
-    public List<News> getAllNews() {
+    @Override
+    public List<News> getAll() {
         Query query = em.createNativeQuery("SELECT * FROM NEWS");
         return query.getResultList();
     }
 
-    public void remove(News news) {
-        news.setDeleted(true);
-        Query query = em.createNativeQuery("UPDATE NEWS SET DELETED = 1 WHERE ID = " + news.getId());
-        query.executeUpdate();
+    @Override
+    public void insert(News news) {
+        em.persist(news);
     }
 
-    public News findById(long id) {
-        return em.find(News.class, id);
-    }
-
-    public void edit(News news) {
-        News editedNews = findById(news.getId());
+    @Override
+    public void update(News news) {
+        News editedNews = find(news);
         editedNews.setTitle(news.getTitle());
         editedNews.setCreationDate(news.getCreationDate());
         editedNews.setBrief(news.getBrief());
@@ -46,8 +44,20 @@ public class NewsDao {
         em.merge(editedNews);
     }
 
-    public void addNews(News news) {
-        em.persist(news);
+    @Override
+    public void delete(News news) {
+        news.setDeleted(true);
+        Query query = em.createNativeQuery("UPDATE NEWS SET DELETED = 1 WHERE ID = " + news.getId());
+        query.executeUpdate();
+    }
+
+    @Override
+    public News find(News news) {
+        return em.find(News.class, news.getId());
+    }
+
+    public News find(long id) {
+        return em.find(News.class, id);
     }
 
     public EntityManagerFactory getEmf() {

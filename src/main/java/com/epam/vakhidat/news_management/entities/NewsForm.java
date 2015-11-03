@@ -1,4 +1,4 @@
-package com.epam.vakhidat.news_management;
+package com.epam.vakhidat.news_management.entities;
 
 import org.apache.struts.action.ActionForm;
 import org.joda.time.LocalDate;

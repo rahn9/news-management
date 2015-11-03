@@ -1,7 +1,7 @@
 package com.epam.vakhidat.news_management.action;
 
-import com.epam.vakhidat.news_management.News;
-import com.epam.vakhidat.news_management.NewsDao;
+import com.epam.vakhidat.news_management.entities.News;
+import com.epam.vakhidat.news_management.dao.NewsDao;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -15,7 +15,7 @@ public class ViewNewsAction extends ActionSupport {
                                  HttpServletRequest request, HttpServletResponse response) {
         NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         long id = Long.valueOf(request.getParameter("id"));
-        News news = newsDao.findById(id);
+        News news = newsDao.find(id);
         request.setAttribute("NewsForm", news);
         return mapping.findForward("success");
     }

@@ -35,7 +35,7 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
-    <bean id="newsDao" class="com.epam.vakhidat.news_management.NewsDao">
+    <bean id="newsDao" class="com.epam.vakhidat.news_management.dao.NewsDao">
         <property name="emf" ref="entityManagerFactory"/>
     </bean>
 
