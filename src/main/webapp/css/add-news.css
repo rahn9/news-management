@@ -2,4 +2,11 @@
     padding-right: 45px;
     font-family: Serif, Monospaced, serif;
     font-size: 14px;
+    table-layout: auto;
+}
+.header {
+    margin: auto;
+    padding: 100px;
+    font-weight: bold;
+    background-color: aqua;
 }

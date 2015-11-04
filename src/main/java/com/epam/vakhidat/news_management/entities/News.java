@@ -1,9 +1,11 @@
 package com.epam.vakhidat.news_management.entities;
 
 
+import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "NEWS")
@@ -14,11 +16,15 @@ public class News {
     @Column(name = "TITLE")
     private String title;
     @Column(name = "CREATION_DATE")
+    @Temporal(TemporalType.DATE)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate creationDate;
     @Column(name = "BRIEF")
     private String brief;
     @Column(name = "CONTENT")
     private String content;
+    @Column(name = "DELETED")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean deleted;
 
     public News() {

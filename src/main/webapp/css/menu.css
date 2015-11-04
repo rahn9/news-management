@@ -1,0 +1,10 @@
+.menu{
+    padding-right: 100px;
+    background-color: lightcyan;
+}
+.menu h1{
+    background-color: lightblue;
+    padding-left: 80px;
+    text-align: center;
+    text-decoration-color: white;
+}
