@@ -7,23 +7,23 @@
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceXmlLocation" value="classpath*:/META-INF/persistence.xml" />
-        <!--<property name="packagesToScan" value="com.epam.vakhidat.news_management.*" />-->
+        <property name="packagesToScan" value="com.epam.vakhidat.news_management.*" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
-       <!-- <property name="jpaProperties">
+        <property name="jpaProperties">
             <props>
-                &lt;!&ndash;<prop key="hibernate.hbm2ddl.auto">update</prop>&ndash;&gt;
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                &lt;!&ndash;<prop key="hibernate.format_sql">true</prop>
-                <prop key="current_session_context_class">thread</prop>&ndash;&gt;
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="current_session_context_class">thread</prop>
                 <prop key="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</prop>
                 <prop key="hibernate.connection.url">jdbc:oracle:thin:@//localhost:1521</prop>
                 <prop key="hibernate.connection.username">sa</prop>
                 <prop key="hibernate.connection.password">sa</prop>
             </props>
-        </property>-->
+        </property>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

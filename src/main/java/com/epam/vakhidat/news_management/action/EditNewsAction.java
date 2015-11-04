@@ -1,7 +1,7 @@
 package com.epam.vakhidat.news_management.action;
 
-import com.epam.vakhidat.news_management.entities.News;
 import com.epam.vakhidat.news_management.dao.NewsDao;
+import com.epam.vakhidat.news_management.entities.News;
 import com.epam.vakhidat.news_management.entities.NewsForm;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 public class EditNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
                                  HttpServletRequest request, HttpServletResponse response) {
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
+        NewsDao newsDao = new NewsDao();
         long id = Long.valueOf(request.getParameter("id"));
         NewsForm newsForm = (NewsForm) actionForm;
         News news = newsDao.find(id);

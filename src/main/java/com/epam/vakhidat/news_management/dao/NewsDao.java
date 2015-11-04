@@ -1,16 +1,11 @@
 package com.epam.vakhidat.news_management.dao;
 
 import com.epam.vakhidat.news_management.entities.News;
-import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Repository
 public class NewsDao implements Dao<News> {
     @PersistenceContext
     private EntityManager em;
@@ -23,8 +18,8 @@ public class NewsDao implements Dao<News> {
 
     @Override
     public List<News> getAll() {
-        Query query = em.createNativeQuery("SELECT * FROM NEWS");
-        return query.getResultList();
+        TypedQuery<News> typedQuery = em.createQuery("SELECT e FROM NEWS e", News.class);
+        return typedQuery.getResultList();
     }
 
     @Override

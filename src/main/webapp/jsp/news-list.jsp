@@ -10,30 +10,33 @@
     <style resource="/css/news-list.css"></style>
 </head>
 <body>
-<logic:iterate id="news" name="news-list">
-    <div class="news-view">
-        <table>
-            <tr>
-                <td class="wide">
-                    <a href="news-list.jsp"><bean:write name="news" property="title"/></a>
-                </td>
-                <td>
-                    <bean:write name="news" property="creationDate"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8">
-                    <bean:write name="news" property="brief"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="wide"></td>
-                <td>
-                    <!--TODO: view, edit, checkbox -->
-                </td>
-            </tr>
-        </table>
-    </div>
-</logic:iterate>
+<logic:notEmpty name="newsList">
+    <logic:iterate id="id" name="newsList" type="com.epam.vakhidat.news_management.entities.News">
+        <div class="news-view">
+            <table>
+                <tr>
+                    <td class="wide">
+                        <a href="edit-news.jsp"><bean:write name="id" property="title"/></a>
+                    </td>
+                    <td>
+                        <bean:write name="id" property="creationDate"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <bean:write name="id" property="brief"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wide"></td>
+                    <td>
+                        <!--TODO: view, edit, checkbox -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </logic:iterate>
+</logic:notEmpty>
+
 </body>
 </html>
