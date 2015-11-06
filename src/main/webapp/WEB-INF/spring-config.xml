@@ -21,7 +21,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <prop key="current_session_context_class">thread</prop>
+                <prop key="current_session_context_class">session</prop>
             </props>
         </property>
     </bean>

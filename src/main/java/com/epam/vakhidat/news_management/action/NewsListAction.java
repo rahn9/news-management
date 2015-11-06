@@ -15,7 +15,9 @@ import java.util.List;
 public class NewsListAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
                                  HttpServletRequest request, HttpServletResponse response) {
-        NewsDao newsDao = new NewsDao();
+//        NewsDao newsDao = new NewsDao();
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
+
         List<News> news = newsDao.getAll();
         news.add(1, new News("dfgdfag", LocalDate.now(), "asdgfukfg", "adsfdfagdfg"));
         request.setAttribute("newsList", news);

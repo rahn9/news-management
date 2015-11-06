@@ -18,7 +18,8 @@ public class AddNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
                                  HttpServletRequest request, HttpServletResponse response) {
         NewsForm newsForm = (NewsForm) actionForm;
-        NewsDao newsDao = new NewsDao();
+//        NewsDao newsDao = new NewsDao();
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
 
         News news = new News();
         try {
