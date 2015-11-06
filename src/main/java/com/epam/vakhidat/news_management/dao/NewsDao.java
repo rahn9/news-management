@@ -1,10 +1,13 @@
 package com.epam.vakhidat.news_management.dao;
 
 import com.epam.vakhidat.news_management.entities.News;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Transactional
 public class NewsDao implements Dao<News> {
     @PersistenceContext
     private EntityManager em;
@@ -14,6 +17,7 @@ public class NewsDao implements Dao<News> {
         emf = Persistence.createEntityManagerFactory("NewsDao");
         em = emf.createEntityManager();
     }
+
 
     @Override
     public List<News> getAll() {
