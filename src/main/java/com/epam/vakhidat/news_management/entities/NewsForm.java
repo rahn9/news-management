@@ -1,14 +1,13 @@
 package com.epam.vakhidat.news_management.entities;
 
 import org.apache.struts.action.ActionForm;
-import org.joda.time.LocalDate;
 
 import java.util.UUID;
 
 public class NewsForm extends ActionForm {
     private UUID uuid;
     private String title;
-    private LocalDate creationDate;
+    private String creationDate;
     private String brief;
     private String content;
 
@@ -24,12 +23,12 @@ public class NewsForm extends ActionForm {
         this.title = title;
     }
 
-    public LocalDate getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
     public void setCreationDate(String creationDate) {
-        this.creationDate = LocalDate.parse(creationDate);
+        this.creationDate = creationDate;
     }
 
     public String getBrief() {

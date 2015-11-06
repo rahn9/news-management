@@ -29,21 +29,24 @@ public class NewsDao implements Dao<News> {
     @Override
     public void insert(News news) {
         em = emf.createEntityManager();
+        em.getTransaction().begin();
         em.persist(news);
+        em.getTransaction().commit();
         em.close();
     }
 
     @Override
     public void update(News news) {
         em = emf.createEntityManager();
+        em.getTransaction().begin();
         News editedNews = find(news);
         editedNews.setTitle(news.getTitle());
         editedNews.setCreationDate(news.getCreationDate());
         editedNews.setBrief(news.getBrief());
         editedNews.setContent(news.getContent());
-        editedNews.setCreationDate(news.getCreationDate());
 
         em.merge(editedNews);
+        em.getTransaction().commit();
         em.close();
     }
 
@@ -51,8 +54,7 @@ public class NewsDao implements Dao<News> {
     public void delete(News news) {
         em = emf.createEntityManager();
         news.setDeleted(true);
-        Query query = em.createNativeQuery("UPDATE NEWS SET DELETED = 1 WHERE ID = " + news.getId());
-        query.executeUpdate();
+        em.persist(news);
         em.close();
     }
 

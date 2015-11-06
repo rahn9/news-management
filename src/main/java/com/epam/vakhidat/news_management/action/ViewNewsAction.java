@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ViewNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
                                  HttpServletRequest request, HttpServletResponse response) {
-        NewsDao newsDao = new NewsDao();
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         long id = Long.valueOf(request.getParameter("id"));
         News news = newsDao.find(id);
         request.setAttribute("NewsForm", news);

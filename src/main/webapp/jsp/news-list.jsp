@@ -16,7 +16,7 @@
             <table>
                 <tr>
                     <td class="wide">
-                        <a href="edit-news.jsp"><bean:write name="id" property="title"/></a>
+                        <a href="/edit.do"><bean:write name="id" property="title"/></a>
                     </td>
                     <td>
                         <bean:write name="id" property="creationDate"/>
@@ -30,6 +30,7 @@
                 <tr>
                     <td class="wide"></td>
                     <td>
+
                         <!--TODO: view, edit, checkbox -->
                     </td>
                 </tr>

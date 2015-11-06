@@ -1,24 +1,24 @@
 package com.epam.vakhidat.news_management.entities;
 
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "NEWS")
 public class News {
     @Id
-    @GeneratedValue()
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
     private long id;
     @Column(name = "TITLE")
     private String title;
     @Column(name = "CREATION_DATE")
     @Temporal(TemporalType.DATE)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    private LocalDate creationDate;
+    private Date creationDate;
     @Column(name = "BRIEF")
     private String brief;
     @Column(name = "CONTENT")
@@ -30,7 +30,7 @@ public class News {
     public News() {
     }
 
-    public News(String title, LocalDate creationDate, String brief, String content) {
+    public News(String title, Date creationDate, String brief, String content) {
         this.title = title;
         this.creationDate = creationDate;
         this.brief = brief;
@@ -53,11 +53,11 @@ public class News {
         this.title = title;
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 

@@ -6,7 +6,7 @@
     <form-beans>
         <form-bean name="newsForm" type="com.epam.vakhidat.news_management.entities.NewsForm">
             <form-property name="title" type="java.lang.String"/>
-            <form-property name="creationDate" type="java.lang.String"/>
+            <form-property name="creationDate" type="Date"/>
             <form-property name="brief" type="java.lang.String"/>
             <form-property name="content" type="java.lang.String"/>
         </form-bean>
@@ -29,7 +29,7 @@
         </action>
         <action path="/viewNews"
                 type="com.epam.vakhidat.news_management.action.ViewNewsAction">
-            <forward name="success" redirect="true" path="/newsList.do"/>
+            <forward name="success" redirect="true" path="/jsp/view-news.jsp"/>
         </action>
         <action path="/delete" type="com.epam.vakhidat.news_management.action.DeleteNewsAction">
             <forward name="success" redirect="true" path="/newsList.do"/>

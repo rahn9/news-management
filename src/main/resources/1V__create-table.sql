@@ -2,7 +2,7 @@ CREATE TABLE SA.news
 (
     id NUMBER(10, 0) PRIMARY KEY NOT NULL,
     title VARCHAR2(100) NOT NULL,
-    creation_date DATE DEFAULT CURRENT_DATE,
+    creation_date  DATE DEFAULT CURRENT_DATE,
     brief VARCHAR2(500),
     content VARCHAR2(2048) NOT NULL,
     deleted NUMBER(1, 0) DEFAULT 0
