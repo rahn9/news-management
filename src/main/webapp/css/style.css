@@ -1,18 +1,18 @@
 .holy-grail {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    font-family: Serif, Monospaced, serif;
 }
 
 .holy-grail__header {
     flex: 0 0 10%;
-    background-color: cadetblue;
+    background-color: cornflowerblue;
     justify-content: space-around;
+    min-height: 50px;
 }
 
 .holy-grail__body {
     display: flex;
-justify-content: flex-start;
 }
 
 .holy-grail__menu {
@@ -23,28 +23,31 @@ justify-content: flex-start;
 
 .holy-grail__content {
     order: 2;
-    padding-top: 100px;
-    padding-left: 220px;
 }
 
 .grid__row {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .grid__header {
     flex: 1;
     font-weight: bold;
     font-size: 35px;
+    alignment: center;
 }
 
 .grid__lan-bar {
     flex: 2;
-    padding-top: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .lan-bar{
+    padding-left: 1%;
+    padding-right: 2%;
 }
 
 .grid__menu{
@@ -63,9 +66,20 @@ justify-content: flex-start;
     border: medium cadetblue;
     display: flex;
     flex-direction: column;
-    padding-right: 45px;
     font-family: Serif, Monospaced, serif;
     font-size: 14px;
-    table-layout: auto;
+    margin: 50px 100px 100px;
+    justify-content: center;
+    align-content: center;
+}
+
+td {
+    vertical-align: top;
+    padding-right: 25px;
+}
+
+.action-form__button{
+    align-self: center;
+    padding: 20px;
 }
 

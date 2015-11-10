@@ -7,7 +7,7 @@
     <title>
         <bean:message key="newsManagement.title"/>
     </title>
-    <style resource="/css/style.css"></style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 <div class="holy-grail">
