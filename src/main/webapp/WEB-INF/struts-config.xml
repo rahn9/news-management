@@ -25,7 +25,6 @@
                 input="jsp/add-news.jsp"
                 >
             <forward name="success" path="/newsList.do"/>
-            <forward name="failure" path="/jsp/error.jsp"/>
         </action>
         <action path="/viewNews"
                 type="com.epam.vakhidat.news_management.action.ViewNewsAction">

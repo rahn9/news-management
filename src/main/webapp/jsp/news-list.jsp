@@ -7,7 +7,7 @@
     <title>
         <bean:message key="newsManagement.title"/>
     </title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="holy-grail">
@@ -17,43 +17,73 @@
                 <bean:message key="newsManagement.title"/>
             </div>
             <div class="grid__lan-bar">
-                <html:link page="/locale.do?language=russian">
-                    <bean:message key="link.russian"/>
-                </html:link>
-                <html:link page="/locale.do?language=english">
-                    <bean:message key="link.english"/>
-                </html:link>
+                <div class="lan-bar">
+                    <html:link page="/locale.do?language=russian">
+                        <bean:message key="link.russian"/>
+                    </html:link>
+                </div>
+                <div class="lan-bar">
+                    <html:link page="/locale.do?language=english">
+                        <bean:message key="link.english"/>
+                    </html:link>
+                </div>
             </div>
         </div>
     </div>
-    <logic:notEmpty name="newsList">
-        <logic:iterate id="id" name="newsList" type="com.epam.vakhidat.news_management.entities.News">
-            <div class="news-view">
-                <table>
-                    <tr>
-                        <td class="wide">
-                            <a href="/edit.do"><bean:write name="id" property="title"/></a>
-                        </td>
-                        <td>
-                            <bean:write name="id" property="creationDate"/>
-                        </td>
-                    </tr>
-                    <tr>у
-                        <td colspan="8">
-                            <bean:write name="id" property="brief"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="wide"></td>
-                        <td>
-
-                            <!--TODO: view, edit, checkbox -->
-                        </td>
-                    </tr>
-                </table>
+    <div class="holy-grail__body">
+        <div class="holy-grail__menu">
+            <div class="grid__menu_header">
+                <bean:message key="newsMenu.title"/>
             </div>
-        </logic:iterate>
-    </logic:notEmpty>
+            <div class="grid__menu">
+                <ul>
+                    <li>
+                        <a href="/newsList.do">
+                            <bean:message key="newsMenu.newsList.link"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/addNewsPage.do">
+                            <bean:message key="newsMenu.addNews.link"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="holy-grail__content">
+            <logic:notEmpty name="newsList">
+                <logic:iterate id="newsList" name="newsList" type="com.epam.vakhidat.news_management.entities.News">
+                    <div class="news-view">
+                        <div class="news-view__item">
+                            <div class="news-view__title">
+                                <bean:write name="newsList" property="title"/>
+                            </div>
+                            <div>
+                                <bean:write name="newsList" property="creationDate"/>
+                            </div>
+                        </div>
+                        <div class="news-view__item">
+                            <bean:write name="newsList" property="brief"/>
+                        </div>
+                        <div class="news-view__links">
+                            <a href="viewNews.do?id=<bean:write name="newsList" property="id" />'>
+                                <bean:message key="newsList.label.link.view"/>
+                            </a>
+                            <a href="/edit.do">
+                                <bean:message key="newsList.label.link.edit"/>
+                            </a>
+                            <html:checkbox property="deleted" name="newsList" value="true" indexed="true"/>
+                        </div>
+                    </div>
+                </logic:iterate>
+            </logic:notEmpty>
+            <div class="action-form__button">
+                <html:submit>
+                    <bean:message key="newsList.label.button.delete"/>
+                </html:submit>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

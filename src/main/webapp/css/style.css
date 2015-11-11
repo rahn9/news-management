@@ -6,9 +6,9 @@
 
 .holy-grail__header {
     flex: 0 0 10%;
-    background-color: cornflowerblue;
     justify-content: space-around;
     min-height: 50px;
+    border-bottom: solid;
 }
 
 .holy-grail__body {
@@ -17,12 +17,17 @@
 
 .holy-grail__menu {
     order: 1;
-    background-color: aliceblue;
-    flex: 0 0 380px;
+    background-color: cornsilk;
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    border: medium black;
 }
 
 .holy-grail__content {
     order: 2;
+    font-size: 32px;
 }
 
 .grid__row {
@@ -34,8 +39,9 @@
 .grid__header {
     flex: 1;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 45px;
     alignment: center;
+    margin-left: 2%;
 }
 
 .grid__lan-bar {
@@ -43,32 +49,37 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    margin-right: 10%;
+    font-size: 24px;
 }
 
-.lan-bar{
+.lan-bar {
     padding-left: 1%;
     padding-right: 2%;
 }
 
-.grid__menu{
+.grid__menu {
     background-color: white;
     align-content: center;
     height: auto;
+    margin: 0% 10% 10%;
 }
 
 .grid__menu_header {
-    background-color: cadetblue;
+    background-color: bisque;
     text-decoration-color: white;
     text-align: center;
+    margin: 3% 10%;
 }
 
-.action-form{
+.action-form {
     border: medium cadetblue;
     display: flex;
     flex-direction: column;
     font-family: Serif, Monospaced, serif;
-    font-size: 14px;
-    margin: 50px 100px 100px;
+    font-size: 34px;
+    margin-top: 10%;
+    margin-left: 20%;
     justify-content: center;
     align-content: center;
 }
@@ -78,8 +89,33 @@ td {
     padding-right: 25px;
 }
 
-.action-form__button{
+.action-form__button {
     align-self: center;
     padding: 20px;
 }
+
+.news-view {
+    margin-top: 10%;
+    margin-left: 15%;
+    font-family: Serif, Monospaced, serif;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.news-view__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-view__title{
+    font-weight: bold;
+}
+
+.news-view__links {
+align-self: flex-end;
+}
+
+
 

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DeleteNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
                                  HttpServletRequest request, HttpServletResponse response) {
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
+        NewsDao newsDao = new NewsDao();
         long id = Long.valueOf(request.getParameter("id"));
         News news = newsDao.find(id);
         newsDao.delete(news);

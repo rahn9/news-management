@@ -7,7 +7,7 @@
     <title>
         <bean:message key="newsManagement.title"/>
     </title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -32,7 +32,25 @@
         </div>
     </div>
     <div class="holy-grail__body">
-        <div class="holy-grail__menu"></div>
+        <div class="holy-grail__menu">
+            <div class="grid__menu_header">
+                <bean:message key="newsMenu.title"/>
+            </div>
+            <div class="grid__menu">
+                    <ul>
+                        <li>
+                            <a href="/newsList.do">
+                                <bean:message key="newsMenu.newsList.link"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/addNewsPage.do">
+                                <bean:message key="newsMenu.addNews.link"/>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
         <div class="holy-grail__content">
             <html:form action="/addNews.do" method="POST">
             <div class="action-form">
