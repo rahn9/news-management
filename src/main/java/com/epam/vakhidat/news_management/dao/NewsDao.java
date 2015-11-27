@@ -1,9 +1,10 @@
 package com.epam.vakhidat.news_management.dao;
 
-import com.epam.vakhidat.news_management.entities.News;
+import com.epam.vakhidat.news_management.entity.News;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NewsDao implements Dao<News> {
     @PersistenceContext
@@ -19,8 +20,9 @@ public class NewsDao implements Dao<News> {
     public List<News> getAll() {
         em = emf.createEntityManager();
         TypedQuery<News> typedQuery = em.createQuery("SELECT e FROM News e", News.class);
+        List<News> newsList = typedQuery.getResultList().stream().filter(news -> !news.isDeleted()).collect(Collectors.toList());
         try {
-            return typedQuery.getResultList();
+            return newsList;
         } finally {
             em.close();
         }
@@ -39,13 +41,7 @@ public class NewsDao implements Dao<News> {
     public void update(News news) {
         em = emf.createEntityManager();
         em.getTransaction().begin();
-        News editedNews = find(news);
-        editedNews.setTitle(news.getTitle());
-        editedNews.setCreationDate(news.getCreationDate());
-        editedNews.setBrief(news.getBrief());
-        editedNews.setContent(news.getContent());
-
-        em.merge(editedNews);
+        em.merge(news);
         em.getTransaction().commit();
         em.close();
     }
@@ -53,21 +49,13 @@ public class NewsDao implements Dao<News> {
     @Override
     public void delete(News news) {
         em = emf.createEntityManager();
-        news.setDeleted(true);
-        em.persist(news);
+        em.getTransaction().begin();
+        em.merge(news);
+        em.getTransaction().commit();
         em.close();
     }
 
     @Override
-    public News find(News news) {
-        em = emf.createEntityManager();
-        try {
-            return em.find(News.class, news.getId());
-        } finally {
-            em.close();
-        }
-    }
-
     public News find(long id) {
         em = emf.createEntityManager();
         try {

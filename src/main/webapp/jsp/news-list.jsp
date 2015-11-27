@@ -51,37 +51,36 @@
             </div>
         </div>
         <div class="holy-grail__content">
-            <logic:notEmpty name="newsList">
-                <logic:iterate id="newsList" name="newsList" type="com.epam.vakhidat.news_management.entities.News">
-                    <div class="news-view">
-                        <div class="news-view__item">
-                            <div class="news-view__title">
-                                <bean:write name="newsList" property="title"/>
+                <logic:notEmpty name="newsList">
+                    <html:form action="/deleteFromList" method="POST">
+                    <logic:iterate id="newsList" name="newsList" property="newsList">
+                        <div class="news-list">
+                            <div class="news-list__item">
+                                <div class="news-list__title">
+                                    <bean:write name="newsList" property="title"/>
+                                </div>
+                                <div>
+                                    <bean:write name="newsList" property="creationDate"/>
+                                </div>
                             </div>
-                            <div>
-                                <bean:write name="newsList" property="creationDate"/>
+                            <div class="news-list__item">
+                                <bean:write name="newsList" property="brief"/>
+                            </div>
+
+                            <div class="news-list__links">
+                                <a href="/viewNews.do?id=<bean:write name="newsList" property="id" />">
+                                    <bean:message key="newsList.label.link.view"/>
+                                </a>
+                                <a href="/editPage.do?id=<bean:write name="newsList" property="id" />">
+                                    <bean:message key="newsList.label.link.edit"/>
+                                </a>
+                                <html:checkbox name="newsList" property="deleted" value="true" indexed="true"/>
                             </div>
                         </div>
-                        <div class="news-view__item">
-                            <bean:write name="newsList" property="brief"/>
-                        </div>
-                        <div class="news-view__links">
-                            <a href="viewNews.do?id=<bean:write name="newsList" property="id" />'>
-                                <bean:message key="newsList.label.link.view"/>
-                            </a>
-                            <a href="/edit.do">
-                                <bean:message key="newsList.label.link.edit"/>
-                            </a>
-                            <html:checkbox property="deleted" name="newsList" value="true" indexed="true"/>
-                        </div>
-                    </div>
-                </logic:iterate>
-            </logic:notEmpty>
-            <div class="action-form__button">
-                <html:submit>
-                    <bean:message key="newsList.label.button.delete"/>
-                </html:submit>
-            </div>
+                    </logic:iterate>
+                        <button id="delete" type="submit"><bean:message key='newsList.label.button.delete'/></button>
+                    </html:form>
+                </logic:notEmpty>
         </div>
     </div>
 </div>

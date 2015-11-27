@@ -53,6 +53,7 @@
         </div>
         <div class="holy-grail__content">
             <html:form action="/addNews.do" method="POST">
+                <html:hidden property="id"/>
             <div class="action-form">
                 <table width=100%>
                     <tr>
@@ -72,7 +73,6 @@
                         <td width="80%"><html:textarea property="content" cols="55" rows="10"/></td>
                     </tr>
                 </table>
-
             <div class="action-form__button">
                 <html:submit>
                     <bean:message key="newsEdit.label.button.save"/>

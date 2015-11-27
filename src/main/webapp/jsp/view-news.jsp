@@ -1,6 +1,7 @@
+<%--@elvariable id="news" type="com.epam.vakhidat.news_management.form.NewsForm"--%>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@ taglib prefix="html" uri="http://jakarta.apache.org/struts/tags-html" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title><bean:message key="newsManagement.title"/></title>
@@ -49,35 +50,47 @@
             </div>
         </div>
         <div class="holy-grail__content">
-            <html:form action="/edit.do" method="POST">
-                <input type="hidden" name="id" value='<bean:write name="NewsForm" property="id" />' />
-                <div class="news-view">
-                <table>
-                    <tr>
-                        <td><bean:message key="news.label.title"/></td>
-                        <td class="wide"><bean:write name="NewsForm" property="title"/></td>
-                    </tr>
-                    <tr>
-                        <td><bean:message key="news.label.date"/></td>
-                        <td class="wide"><bean:write name="NewsForm" property="creationDate"/></td>
-                    </tr>
-                    <tr>
-                        <td><bean:message key="news.label.brief"/></td>
-                        <td class="wide"><bean:write name="NewsForm" property="brief"/></td>
-                    </tr>
-                    <tr>
-                        <td><bean:message key="news.label.content"/></td>
-                        <td class="wide"><bean:write name="NewsForm" property="content"/></td>
-                    </tr>
-                </table>
-                <html:submit>
-                    <bean:message key="newsView.label.button.edit"/>
-                </html:submit>
-                <html:submit>
-                    <bean:message key="newsList.label.button.delete"/>
-                </html:submit>
+            <div class="news-view">
+                <div class="news-view__title">
+                    <p>
+                        <bean:message key="news.label.title"/>
+                    </p>
+
+                    <p>
+                        <bean:message key="news.label.date"/>
+                    </p>
+
+                    <p>
+                        <bean:message key="news.label.brief"/>
+                    </p>
+
+                    <p>
+                        <bean:message key="news.label.content"/>
+                    </p>
+                </div>
+
+                <div class="news-view__item">
+                    <p>
+                        ${news.title}
+                    </p>
+
+                    <p>
+                        ${news.creationDate}
+                    </p>
+
+                    <p>
+                        ${news.brief}
+                    </p>
+
+                    <p>
+                        ${news.content}
+                    </p>
+                </div>
             </div>
-                </html:form>
+            <div class="news-view__links">
+                <a href="/editPage.do?id=${news.id}"><bean:message key="newsView.label.button.edit"/></a>
+                <a href="/delete.do?id=${news.id}"><bean:message key="newsView.label.button.delete"/> </a>
+            </div>
         </div>
     </div>
 </div>

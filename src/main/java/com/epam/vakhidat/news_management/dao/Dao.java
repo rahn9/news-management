@@ -11,5 +11,5 @@ public interface Dao<T> {
 
     void delete(T t);
 
-    T find(T t);
+    T find(long id);
 }

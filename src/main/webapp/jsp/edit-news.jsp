@@ -1,6 +1,6 @@
 <%@ taglib prefix="html" uri="http://jakarta.apache.org/struts/tags-html" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>
@@ -51,30 +51,43 @@
         </div>
         <div class="holy-grail__content">
             <html:form action="/edit.do" method="POST">
+                <html:hidden property="id" value="${news.id}"/>
                 <div class="action-form">
                     <table width=100%>
                         <tr>
                             <td width="20%"><bean:message key="news.label.title"/></td>
-                            <td width="80%"><html:text property="title" size="50"/></td>
+                            <td width="80%"><html:text property="title" size="50" value="${news.title}"/></td>
                         </tr>
                         <tr>
                             <td width="20%"><bean:message key="news.label.date"/></td>
-                            <td width="80%"><html:text property="creationDate" size="15"/></td>
+                            <td width="80%"><html:text property="creationDate" size="15"
+                                                       value="${news.creationDate}"/></td>
+
                         </tr>
                         <tr>
                             <td width="20%"><bean:message key="news.label.brief"/></td>
-                            <td width="80%"><html:textarea property="brief" cols="55" rows="5"/></td>
+                            <td width="80%"><html:textarea property="brief" cols="55" rows="5"
+                                                           value="${news.brief}"/></td>
                         </tr>
                         <tr>
                             <td width="20%"><bean:message key="news.label.content"/></td>
-                            <td width="80%"><html:textarea property="content" cols="55" rows="10"/></td>
+                            <td width="80%"><html:textarea property="content" cols="55" rows="10"
+                                                           value="${news.content}"/></td>
                         </tr>
                     </table>
+                    <div class="action-form__button">
+                        <html:submit>
+                            <bean:message key="newsEdit.label.button.save"/>
+                        </html:submit>
+                        <html:reset>
+                            <bean:message key="newsEdit.label.button.cancel"/>
+                        </html:reset>
+                    </div>
                 </div>
             </html:form>
-            </div>
         </div>
     </div>
+</div>
 </body>
 </html>
 

@@ -1,4 +1,4 @@
-package com.epam.vakhidat.news_management.entities;
+package com.epam.vakhidat.news_management.entity;
 
 
 import org.hibernate.annotations.GenericGenerator;
