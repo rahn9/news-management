@@ -117,7 +117,7 @@ td {
     align-self: flex-end;
 }
 
-.news-view{
+.news-view {
     margin-top: 10%;
     margin-left: 15%;
     font-family: Serif, Monospaced, serif;
@@ -128,11 +128,11 @@ td {
     border: medium black;
 }
 
-.news-view__title{
+.news-view__title {
     font-weight: bold;
 }
 
-.news-view__item{
+.news-view__item {
     margin-left: 30%;
 }
 

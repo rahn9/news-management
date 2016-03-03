@@ -37,23 +37,23 @@
                 <bean:message key="newsMenu.title"/>
             </div>
             <div class="grid__menu">
-                    <ul>
-                        <li>
-                            <a href="/newsList.do">
-                                <bean:message key="newsMenu.newsList.link"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/addNewsPage.do">
-                                <bean:message key="newsMenu.addNews.link"/>
-                            </a>
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        <a href="/newsList.do">
+                            <bean:message key="newsMenu.newsList.link"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/addNewsPage.do">
+                            <bean:message key="newsMenu.addNews.link"/>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="holy-grail__content">
             <html:form action="/addNews.do" method="POST">
-                <html:hidden property="id"/>
+            <html:hidden property="id"/>
             <div class="action-form">
                 <table width=100%>
                     <tr>
@@ -73,14 +73,14 @@
                         <td width="80%"><html:textarea property="content" cols="55" rows="10"/></td>
                     </tr>
                 </table>
-            <div class="action-form__button">
-                <html:submit>
-                    <bean:message key="newsEdit.label.button.save"/>
-                </html:submit>
-                <html:reset>
-                    <bean:message key="newsEdit.label.button.cancel"/>
-                </html:reset>
-            </div>
+                <div class="action-form__button">
+                    <html:submit>
+                        <bean:message key="newsEdit.label.button.save"/>
+                    </html:submit>
+                    <html:reset>
+                        <bean:message key="newsEdit.label.button.cancel"/>
+                    </html:reset>
+                </div>
             </div>
         </div>
         </html:form>

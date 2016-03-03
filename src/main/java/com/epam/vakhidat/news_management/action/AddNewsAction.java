@@ -12,7 +12,6 @@ import org.springframework.web.struts.ActionSupport;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
-import java.util.GregorianCalendar;
 
 public class AddNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm,

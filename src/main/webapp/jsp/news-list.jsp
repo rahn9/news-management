@@ -51,8 +51,8 @@
             </div>
         </div>
         <div class="holy-grail__content">
-                <logic:notEmpty name="newsList">
-                    <html:form action="/deleteFromList" method="POST">
+            <logic:notEmpty name="newsList">
+                <html:form action="/deleteFromList" method="POST">
                     <logic:iterate id="newsList" name="newsList" property="newsList">
                         <div class="news-list">
                             <div class="news-list__item">
@@ -78,9 +78,9 @@
                             </div>
                         </div>
                     </logic:iterate>
-                        <button id="delete" type="submit"><bean:message key='newsList.label.button.delete'/></button>
-                    </html:form>
-                </logic:notEmpty>
+                    <button id="delete" type="submit"><bean:message key='newsList.label.button.delete'/></button>
+                </html:form>
+            </logic:notEmpty>
         </div>
     </div>
 </div>
