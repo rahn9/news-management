@@ -18,8 +18,5 @@ public class AddNewsActionTest {
         assertTrue(false);
     }
 
-    @Test
-    public void testFail() {
-        assertTrue(false);
-    }
+
 }
