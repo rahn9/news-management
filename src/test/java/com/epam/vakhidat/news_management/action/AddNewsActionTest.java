@@ -17,4 +17,9 @@ public class AddNewsActionTest {
     public void testIgnored() throws Exception {
         assertTrue(false);
     }
+
+    @Test
+    public void testFail() {
+        assertTrue(false);
+    }
 }
